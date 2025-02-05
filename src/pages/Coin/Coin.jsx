@@ -15,7 +15,7 @@ const Coin = () => {
 
   const fetchCoinData = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/coin/${coinId}`);
+      const res = await fetch(`https://thecrypto.onrender.com/api/coin/${coinId}`);
       const data = await res.json();
       setCoinData(data);
     } catch (err) {
@@ -33,7 +33,7 @@ const Coin = () => {
     }
     try {
       const res = await fetch(
-        `http://localhost:5000/api/market-chart/${coinId}/${currency.name}&interval=daily`
+        `https://thecrypto.onrender.com/api/market-chart/${coinId}/${currency.name}&interval=daily`
       );
       const data = await res.json();
       setHistoricalData(data);
