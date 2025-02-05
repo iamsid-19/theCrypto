@@ -1,37 +1,51 @@
 import { createContext, useEffect, useState } from "react";
+
 export const CoinContext = createContext();
 
+const CoinContextProvider = (props) => {
+    const [allCoins, setAllCoins] = useState([]);
+    const [currency, setCurrency] = useState({
+        name: "usd",
+        Symbol: "$",
+    });
 
-//creating Provider function
-const coinProviderContext = (props) => {
-    const [allCoin, setAllCoin] = useState([]);
-    const [curreny, setCurrency] = useState({
-        name: 'usd',
-        symbol: '$'
-    })
-    const fetchAllCoin = async () => {
-        const options = {
-            method: 'GET',
-            headers: { accept: 'application/json', 'x-cg-demo-api-key': 'CG-dTLuqMNkMmjCSQ53S8wfF37q' }
-        };
+    
+    const fetchAllCoins = async () => {
+        if (!currency || !currency.name) return; 
 
-        fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${curreny.name}`, options)
-            .then(res => res.json())
-            .then(res => setAllCoin(res))
-            .catch(err => console.error(err));
-    }
+        try {
+            const response = await fetch(
+                `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        accept: 'application/json',
+                        'x-cg-demo-api-key': 'CG-dTLuqMNkMmjCSQ53S8wfF37q',
+                    },
+                }
+            );
+            const data = await response.json();
+            setAllCoins(data);
+        } catch (err) {
+            console.error("Error fetching coins:", err);
+        }
+    };
+
     useEffect(() => {
-        fetchAllCoin();
-    }, [curreny])
+        fetchAllCoins();
+    }, [currency]); 
+
     const contextValue = {
-        allCoin, setCurrency, curreny
-    }
+        allCoins,
+        currency,
+        setCurrency,
+    };
+
     return (
         <CoinContext.Provider value={contextValue}>
-            {
-                props.children
-            }
+            {props.children}
         </CoinContext.Provider>
-    )
-}
-export default coinProviderContext;
+    );
+};
+
+export default CoinContextProvider;
