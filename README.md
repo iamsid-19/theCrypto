@@ -1,22 +1,22 @@
-# 🚀 [the-Crypto](https://the-crypto.vercel.app/)
+# 🚀 [Cryptoplace](https://the-crypto.vercel.app/)
 ![the-Crypto-banner](./assets/theCryptoSS1.png)
 
 ### Deployment: [the-crypto.vercel.app](https://the-crypto.vercel.app/)
 ---
 
-## 📌 What is theCrypto?
+## 📌 What is Cryptoplace?
 A cryptocurrency tracking application developed using **React (frontend)** and **Node.js/Express (backend)**. This app retrieves real-time cryptocurrency data from the **CoinGecko API** and displays price charts with historical data.
 
-## 🎨 theCrypto UI
+## 🎨 Cryptoplace UI
 
 ### 🔹 Hero section:
-![the-Crypto-ui](./assets/theCryptoSS1.png)
+![Cryptoplace-ui](./assets/theCryptoSS1.png)
 
 ### 🔹 Top cryptocurrencies:
-![the-Crypto-table-ui](./assets/theCryptoSS2.png)
+![Cryptoplace-table-ui](./assets/theCryptoSS2.png)
 
-### 🔹 Crypto Insights:
-![the-Crypto-Insights-ui](./assets/theCryptoSS3.png)
+### 🔹 Cryptoplace Insights:
+![Cryptoplace-Insights-ui](./assets/theCryptoSS3.png)
 
 ## ✅ Features
 ✔️ Real-time cryptocurrency market data  
